@@ -36,9 +36,19 @@ single Markdown document.
    python app.py
    ```
 
-   A local Gradio interface will launch. Upload a PDF file to begin the OCR
-   process. The recognized text is presented one page at a time in the output
-   panel.
+   A local Gradio interface will launch. Upload a PDF file and choose one of
+   the following actions:
+
+   - **Render PDF to Images** – converts each page into a PNG file, stores the
+     results in a temporary workspace, and exposes a downloadable ZIP archive.
+     The rendered pages also appear in a gallery preview so you can quickly
+     review them.
+   - **Run OCR** – uses the previously rendered images (rendered on-demand if
+     necessary) and sends them to the DeepSeek OCR endpoint. The recognized
+     text is grouped by page in the output panel.
+
+   A running log of actions (rendering, archiving, API calls, and errors) is
+   displayed beneath the outputs to make it easy to follow the process.
 
 ## Notes
 
