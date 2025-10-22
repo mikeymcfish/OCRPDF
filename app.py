@@ -271,8 +271,12 @@ with gr.Blocks(title="DeepSeek OCR PDF Demo") as iface:
         render_button = gr.Button("Render PDF to Images", variant="secondary")
         ocr_button = gr.Button("Run OCR", variant="primary")
 
-    image_gallery = gr.Gallery(label="Rendered pages", show_label=True)
-    image_gallery.style(preview=True, grid=[2, 3, 4])
+    image_gallery = gr.Gallery(
+        label="Rendered pages",
+        show_label=True,
+        columns=3,
+        preview=True,
+    )
 
     zip_output = gr.File(label="Download page images (zip)")
     text_output = gr.Markdown(label="Recognized text")
