@@ -251,12 +251,13 @@ def run_ocr(pdf_file: object, state: Optional[StateDict]) -> Tuple[str, str, Sta
 
 DESCRIPTION = """
 Upload a PDF file, render each page into an image archive, and optionally run
-the `deepseek-ai/DeepSeek-OCR` model hosted on Hugging Face to retrieve the
-recognized text.
+the `deepseek-ai/DeepSeek-OCR` model locally to retrieve the recognized text.
 
-To authenticate against the Hugging Face Inference API, set the
-`HF_API_TOKEN` environment variable before launching the app. You can also
-override the target endpoint by setting `HF_INFERENCE_ENDPOINT`.
+The application downloads the model weights automatically the first time it is
+used (they are cached for subsequent runs). To use the Hugging Face Inference
+API instead of local execution, set the `HF_API_TOKEN` environment variable (and
+optionally `DEEPSEEK_OCR_MODE=remote`). You can also override the target
+endpoint by setting `HF_INFERENCE_ENDPOINT`.
 """
 
 
