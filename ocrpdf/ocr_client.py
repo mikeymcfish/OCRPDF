@@ -130,9 +130,11 @@ class DeepSeekOCRClient:
         if self._device.type == "cpu":
             dtype = torch.float32
 
-        self._processor = AutoProcessor.from_pretrained(self.model_id)
+        self._processor = AutoProcessor.from_pretrained(
+            self.model_id, trust_remote_code=True
+        )
 
-        model_kwargs: Dict[str, Any] = {}
+        model_kwargs: Dict[str, Any] = {"trust_remote_code": True}
         if dtype is not None:
             model_kwargs["torch_dtype"] = dtype
 
@@ -145,9 +147,13 @@ class DeepSeekOCRClient:
         ):
             try:
                 if candidate == "vision2seq":
-                    model = AutoModelForVision2Seq.from_pretrained(self.model_id, **model_kwargs)
+                    model = AutoModelForVision2Seq.from_pretrained(
+                        self.model_id, **model_kwargs
+                    )
                 else:
-                    model = AutoModelForCausalLM.from_pretrained(self.model_id, **model_kwargs)
+                    model = AutoModelForCausalLM.from_pretrained(
+                        self.model_id, **model_kwargs
+                    )
                 break
             except Exception as exc:  # pragma: no cover - depends on model layout
                 errors.append((model_type_name, exc))

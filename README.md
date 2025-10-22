@@ -41,10 +41,12 @@ recognized text into a single Markdown document.
    python app.py
    ```
 
-   A local Gradio interface will launch. Upload a PDF file and choose one of
-   the following actions:
+   A local Gradio interface will launch (with public sharing enabled). Upload
+   either a PDF file or a ZIP archive of page images and choose one of the
+   following actions:
 
-   - **Render PDF to Images** – converts each page into a PNG file, stores the
+   - **Render to Images** – converts each PDF page into a PNG file or extracts
+     supported image files from the uploaded ZIP archive, stores the
      results in a temporary workspace, and exposes a downloadable ZIP archive.
      The rendered pages also appear in a gallery preview so you can quickly
      review them.
